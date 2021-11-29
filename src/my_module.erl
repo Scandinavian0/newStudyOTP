@@ -53,7 +53,7 @@ newSign(N) when is_number(N) ->
 
 %% 作为现有别名的fun函数的函数
 funFunction(Boolean, Number) ->
-  F = fun either_or_both/2;
+  F = fun either_or_both/2.
 %%  yesno(F)->
 %%    case F(true,false) of
 %%      true -> io:format("yes~n");
