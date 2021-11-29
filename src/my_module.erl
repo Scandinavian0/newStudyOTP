@@ -10,7 +10,7 @@
 -author("liuxu").
 
 %% API
--export([print/1, either_or_both/2, area/1, newArea/1, sign/1, newSign/1, funFunction/2]).
+-export([print/1, either_or_both/2, area/1, newArea/1, sign/1, newSign/1, funFunction/2, ovrrideCatch/0, do_somthing/0]).
 
 print(Term) ->
   io:format("The value of Term is : ~w.~n", [Term]).
@@ -62,7 +62,27 @@ funFunction(Boolean, Number) ->
 %%  yesno(fun({A, B} -> A or B end)
 
 
+%%重抛异常
+ovrrideCatch() ->
+  try
+    do_somthing()
+  catch
+    Class:Reason:Stacktrace ->
+      {Class,Reason,Stacktrace}
+  end.
 
 
 
 
+
+
+
+
+do_somthing() ->
+  erlang:error(not_implemented).
+
+analyze_exc(Class, Reason) ->
+  erlang:error(not_implemented).
+
+handle_exc(Class, Reason, Trace) ->
+  erlang:error(not_implemented).
