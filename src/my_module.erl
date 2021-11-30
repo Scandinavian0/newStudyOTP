@@ -62,7 +62,7 @@ funFunction(Boolean, Number) ->
 %%  yesno(fun({A, B} -> A or B end)
 
 
-%%重抛异常
+%%重抛异常 ps 旧的语法过时了，这是21的新语法
 ovrrideCatch() ->
   try
     do_somthing()
