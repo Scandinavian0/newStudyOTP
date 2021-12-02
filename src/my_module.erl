@@ -10,7 +10,16 @@
 -author("liuxu").
 
 %% API
--export([print/1, either_or_both/2, area/1, newArea/1, sign/1, newSign/1, funFunction/2, ovrrideCatch/0, do_somthing/0]).
+-export([print/1
+  , either_or_both/2
+  , area/1
+  , newArea/1
+  , sign/1
+  , newSign/1
+%%  , funFunction/2
+  , ovrrideCatch/0
+  , do_somthing/0
+  ,multiple/0]).
 
 print(Term) ->
   io:format("The value of Term is : ~w.~n", [Term]).
@@ -52,8 +61,8 @@ newSign(N) when is_number(N) ->
   end.
 
 %% 作为现有别名的fun函数的函数
-funFunction(Boolean, Number) ->
-  F = fun either_or_both/2.
+%%funFunction(Boolean, Number) ->
+%%  F = fun either_or_both/2.
 %%  yesno(F)->
 %%    case F(true,false) of
 %%      true -> io:format("yes~n");
@@ -71,8 +80,18 @@ ovrrideCatch() ->
       {Class,Reason,Stacktrace}
   end.
 
-
-
+%% if多重语法 Multiple Expression
+multiple()->
+  A = 5,
+  B = 6,
+  if
+    A == B ->
+      io:fwrite("A is equal to B");
+    A < B ->
+      io:format("A is less than B");
+    true ->
+      io:fwrite("false")
+  end.
 
 
 
