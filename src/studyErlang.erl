@@ -20,7 +20,9 @@
 start()->
   io:fwrite("this is my new study file for log my study process"),
   X = [1,2,3,4],
-  while(X).
+  while(X),
+  for(5,1)
+.
 
 %% while循环
 %% 所有函数式编程语言，它们不提供任何循环结构
@@ -31,6 +33,10 @@ while([_|T], Acc) ->
   io:fwrite("~w~n",[Acc]),
   while(T,Acc+1).
 
-%%for(0,_)->
-%%  [],
+for(0,_)->
+  [];
+  for(N,Term) when N>0->
+    io:fwrite("Hello word ~n"),
+    [Term|for(N-1,Term)].
+
   
