@@ -19,7 +19,9 @@
 %%  , funFunction/2
   , ovrrideCatch/0
   , do_somthing/0
-  ,multiple/0]).
+%%  ,multiple/2
+%%  ,start/0
+]).
 
 print(Term) ->
   io:format("The value of Term is : ~w.~n", [Term]).
@@ -81,27 +83,26 @@ ovrrideCatch() ->
   end.
 
 %% if多重语法 Multiple Expression
-multiple()->
-  A = 5,
-  B = 6,
-  if
-    A == B ->
-      io:fwrite("A is equal to B");
-    A < B ->
-      io:format("A is less than B");
-    true ->
-      io:fwrite("false")
-  end.
+%%multiple(a,b)->
+%%  if
+%%    a == b ->
+%%      io:fwrite("A is equal to B");
+%%    a < b ->
+%%      io:format("A is less than B");
+%%    true ->
+%%      io:fwrite("false")
+%%  end.
 
-
+%%start()->
+%%  multiple(1,2).
 
 
 
 do_somthing() ->
   erlang:error(not_implemented).
 
-analyze_exc(Class, Reason) ->
-  erlang:error(not_implemented).
-
-handle_exc(Class, Reason, Trace) ->
-  erlang:error(not_implemented).
+%%analyze_exc(Class, Reason) ->
+%%  erlang:error(not_implemented).
+%%
+%%handle_exc(Class, Reason, Trace) ->
+%%  erlang:error(not_implemented).
