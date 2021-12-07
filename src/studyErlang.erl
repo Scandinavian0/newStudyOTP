@@ -25,7 +25,20 @@ start() ->
   while(X),
   for(5, 1),
 %%  Buy=[{oranges,4},{newspapper,1},{apples,6},{pears,6},{milk,3}],
-  total([{milk, 3}]).
+  total([]),
+  total([{milk, 3}]),
+  total([{oranges, 10}]),
+%%  hypot = fun(X, Y) ->
+%%    math:sqrt(X * X + Y * Y)
+%%          end,
+%%  io:fwrite("~w~n", [hypot(3, 4)])
+%%  hypot(3,4),
+%%  L=[1,2,3,4],
+%%  io:fwrite("~w~n",lists:map(fun(X)-> 2*X end,L)),
+  Add = fun (A, B) -> A + B end,
+  io:fwrite("~w~n",[Add(1,2)])
+.
+
 cost(oranges) -> 4;
 cost(newsspapper) -> 1;
 cost(apples) -> 3;
@@ -33,9 +46,10 @@ cost(pears) -> 6;
 cost(milk) -> 3.
 
 total([{What, N} | T]) ->
+%%  递归
   A = cost(What) * N + total(T),
 %%  打印变量的方法，而不是直接io:fwrite(A)
-  io:fwrite("~w", [A]);
+  io:fwrite("~w~n", [A]);
 total([]) -> 0.
 
 
@@ -54,4 +68,4 @@ for(N, Term) when N > 0 ->
   io:fwrite("Hello word ~n"),
   [Term | for(N - 1, Term)].
 
-  
+
