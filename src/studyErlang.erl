@@ -33,14 +33,15 @@ start() ->
 %%          end,
 %%  io:fwrite("~w~n", [hypot(3, 4)])
 %%  hypot(3,4),
-%%  L=[1,2,3,4],
-%%  io:fwrite("~w~n",lists:map(fun(X)-> 2*X end,L)),
+%%  以fun作为参数的函数
+  L=[1,2,3,4],
+  io:fwrite("~w~n",[lists:map(fun(E)-> 2*E end,L)]),
   Add = fun (A, B) -> A + B end,
   io:fwrite("~w~n",[Add(1,2)])
 .
 
 cost(oranges) -> 4;
-cost(newsspapper) -> 1;
+cost(newspapper) -> 1;
 cost(apples) -> 3;
 cost(pears) -> 6;
 cost(milk) -> 3.
