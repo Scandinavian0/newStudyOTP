@@ -33,11 +33,15 @@ start() ->
 %%          end,
 %%  io:fwrite("~w~n", [hypot(3, 4)])
 %%  hypot(3,4),
+
 %%  以fun作为参数的函数
   L=[1,2,3,4],
   io:fwrite("~w~n",[lists:map(fun(E)-> 2*E end,L)]),
   Add = fun (A, B) -> A + B end,
-  io:fwrite("~w~n",[Add(1,2)])
+  io:fwrite("~w~n",[Add(1,2)]),
+  Even=fun(E)->(E rem 2)=:=0 end,
+  io:fwrite("~w~n",[Even(7)]),
+  io:format("~w~n",[Even(8)])
 .
 
 cost(oranges) -> 4;
