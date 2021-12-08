@@ -51,7 +51,12 @@ start() ->
   io:fwrite("IsFruit:~w~n",[IsFruit(apple)]),
 %%  使用list:filter/2作为参数
   io:fwrite("~ts~n",[xmerl_ucs:to_utf8("使用list:filter/2作为参数:")]),
-  io:fwrite("~w~n",[lists:filter(IsFruit,[dog,apple,orange,cat,apple])])
+  io:fwrite("~w~n",[lists:filter(IsFruit,[dog,apple,orange,cat,apple])]),
+
+%% for循环
+  io:format("~ts~n",[xmerl_ucs:to_utf8("调用for 循环:")]),
+  io:format("~w~n",[lib_misc:for(1,10,fun(I)->I*I end)])
+
 .
 
 cost(oranges) -> 4;
