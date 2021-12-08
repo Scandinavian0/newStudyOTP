@@ -10,13 +10,31 @@
 -author("liuxu").
 
 %% API
--export([for/3,start/0]).
-
+-export([for/3
+    , sum/1
+    ,map/2
+    , start/0]).
+%% for循环 迭代for函数
 for(Max, Max, F) -> [F(Max)];
 for(I, Max, F) -> [F(I) | for(I + 1, Max, F)].
 
-start()->
-   io:format("~w~n",[for(1,10,fun(I)->I*I end)])
-%%   io:format("~w~n",[for(10,10,fun(I)->I*I end)])
+%% sum函数
+%% 设传入的指是[1,3,10]
+%% 1.sum([1,3,10])
+%% 2.sum([1,3,10])  =1+sum([3,10])
+%%                  =1+3+sum([10])
+%%                  =1+3+10+sum([])
+%%                  =1+3+10+0.
+sum([H | T]) -> H + sum(T);
+sum([]) -> 0.
 
+%% map集合便利函数
+map(_,[])->[];
+map(F,[H|T])->[F(H)|map(F,T)].
+
+
+start() ->
+    io:format("~w~n", [for(1, 10, fun(I) -> I * I end)])
+%%   io:format("~w~n",[for(10,10,fun(I)->I*I end)])
+    ,io:format("~w~n",[map(fun(X)->2*X end,[1,2,3])])
 .
