@@ -41,7 +41,17 @@ start() ->
   io:fwrite("~w~n",[Add(1,2)]),
   Even=fun(E)->(E rem 2)=:=0 end,
   io:fwrite("~w~n",[Even(7)]),
-  io:format("~w~n",[Even(8)])
+  io:format("~w~n",[Even(8)]),
+
+%%  返回fun的函数
+  Fruit=[apple,pear,orange],
+  MakeTest=fun(A)->(fun(B)->lists:member(B,A) end) end,
+  IsFruit=MakeTest(Fruit),
+  io:format("~ts~n",[xmerl_ucs:to_utf8("返回fun的函数:")]),
+  io:fwrite("IsFruit:~w~n",[IsFruit(apple)]),
+%%  使用list:filter/2作为参数
+  io:fwrite("~ts~n",[xmerl_ucs:to_utf8("使用list:filter/2作为参数:")]),
+  io:fwrite("~w~n",[lists:filter(IsFruit,[dog,apple,orange,cat,apple])])
 .
 
 cost(oranges) -> 4;
