@@ -11,9 +11,10 @@
 
 %% API
 -export([for/3
-    , sum/1
-    ,map/2
-    , start/0]).
+  , sum/1
+  , map/2
+  , start/0
+  , pythag/1]).
 %% for循环 迭代for函数
 for(Max, Max, F) -> [F(Max)];
 for(I, Max, F) -> [F(I) | for(I + 1, Max, F)].
@@ -29,12 +30,22 @@ sum([H | T]) -> H + sum(T);
 sum([]) -> 0.
 
 %% map集合便利函数
-map(_,[])->[];
-map(F,[H|T])->[F(H)|map(F,T)].
+map(_, []) -> [];
+map(F, [H | T]) -> [F(H) | map(F, T)].
 
+%%勾股定理，毕达哥拉斯三元函数
+pythag(N) ->
+  [{A, B, C} ||
+    A <- lists:seq(1, N),
+    B <- lists:seq(1, N),
+    C <- lists:seq(1, N),
+    A + B + C =< N,
+    A * A + B * B =:= C * C
+  ].
 
 start() ->
-    io:format("~w~n", [for(1, 10, fun(I) -> I * I end)])
+  io:format("~w~n", [for(1, 10, fun(I) -> I * I end)])
 %%   io:format("~w~n",[for(10,10,fun(I)->I*I end)])
-    ,io:format("~w~n",[map(fun(X)->2*X end,[1,2,3])])
+  , io:format("~w~n", [map(fun(X) -> 2 * X end, [1, 2, 3])])
+  ,io:fwrite("~w~n",[pythag(30)])
 .
