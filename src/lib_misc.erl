@@ -43,6 +43,7 @@ pythag(N) ->
     A * A + B * B =:= C * C
   ].
 
+
 start() ->
   io:format("~w~n", [for(1, 10, fun(I) -> I * I end)])
 %%   io:format("~w~n",[for(10,10,fun(I)->I*I end)])
