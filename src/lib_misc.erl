@@ -59,5 +59,6 @@ start() ->
   , io:fwrite("~w~n", [pythag(30)])
 %%  ,io:format("~w~n",[])
 
-  ,io:fwrite("~ts",[perms("cats")])
+  ,io:fwrite("~ts~n",[perms("cats")])
+  ,io:format("~w~n",[time()])
 .
