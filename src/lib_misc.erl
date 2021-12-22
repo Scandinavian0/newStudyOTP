@@ -15,7 +15,9 @@
   , map/2
   , start/0
   , pythag/1
-  , perms/1]).
+  , perms/1
+  , odds_and_evens1/1
+  ,odds_and_evens2/1]).
 %% for循环 迭代for函数
 for(Max, Max, F) -> [F(Max)];
 for(I, Max, F) -> [F(I) | for(I + 1, Max, F)].
@@ -52,6 +54,26 @@ perms(L) -> [[H | T] %% 分离出列表头元素赋值到H，剩下代表作为T
   T <- perms(L--[H])] %% 递归，L -- H是列表移除操作符，它从X里移除Y中的元素
 .
 
+%% 归集器，
+%% 区分奇数和偶数,只适用于列表比较短的情况下
+odds_and_evens1(L) ->
+  Odds = [X || X <- L, (X rem 2) =:= 1],
+  Evens = [X || X <- L, (X rem 2) =:= 0],
+  {Odds, Evens}
+.
+%%从写odds_and_evens1，主要避免两次遍历列表
+odds_and_evens2(L)->
+  odd_and_evens_acc(L,[],[]).
+
+odd_and_evens_acc([H|T],Odds,Evens)->
+  case(H rem 2) of
+    1->odd_and_evens_acc(T,[H|Odds],Evens);
+    0->odd_and_evens_acc(T,Odds,[H|Evens])
+  end;
+odd_and_evens_acc([],Odds,Evens)->
+  {Odds,Evens}.
+
+
 start() ->
   io:format("~w~n", [for(1, 10, fun(I) -> I * I end)])
 %%   io:format("~w~n",[for(10,10,fun(I)->I*I end)])
@@ -59,6 +81,8 @@ start() ->
   , io:fwrite("~w~n", [pythag(30)])
 %%  ,io:format("~w~n",[])
 
-  ,io:fwrite("~ts~n",[perms("cats")])
-  ,io:format("~w~n",[time()])
+  , io:fwrite("~ts~n", [perms("cats")])
+  , io:format("~w~n", [time()])
+  , io:format("~w~n", [odds_and_evens1([1, 2, 3, 4, 5, 6,7])])
+  , io:format("~w~n", [odds_and_evens2([1, 2, 3, 4, 5, 6,7])])
 .
