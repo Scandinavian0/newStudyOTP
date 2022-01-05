@@ -2,5 +2,6 @@
 /out/
 .idea
 erl_crash.dump
+.beam
 newErlangOTP.iml
 newStudyOTP.iml
