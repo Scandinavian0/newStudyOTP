@@ -3,5 +3,6 @@
 .idea
 erl_crash.dump
 .beam
+rebar.lock
 newErlangOTP.iml
 newStudyOTP.iml
