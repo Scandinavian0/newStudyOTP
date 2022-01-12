@@ -12,8 +12,8 @@
 
 %% API
 %%-export([]).
-- compile(export_all).
-
+%%- compile().
+-export([start/1,loop/1]).
 start(Tag)->
   spawn(fun()->loop(Tag) end).
 
