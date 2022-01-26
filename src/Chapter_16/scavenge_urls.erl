@@ -43,3 +43,5 @@ collect_url_body("</a>" ++ T, L) ->
 collect_url_body([H | T], L) -> collect_url_body(T, [H | L]);
 collect_url_body([], _) ->{[],[]}.
 
+%%  TODO socket_examples:nano_get_url 见后续的17章代码17。1。1的代码
+
