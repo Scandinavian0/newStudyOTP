@@ -17,7 +17,8 @@
   , pythag/1
   , perms/1
   , odds_and_evens1/1
-  ,odds_and_evens2/1]).
+  ,odds_and_evens2/1,
+  unconsult/2]).
 %% for循环 迭代for函数
 for(Max, Max, F) -> [F(Max)];
 for(I, Max, F) -> [F(I) | for(I + 1, Max, F)].
@@ -72,6 +73,14 @@ odd_and_evens_acc([H|T],Odds,Evens)->
   end;
 odd_and_evens_acc([],Odds,Evens)->
   {Odds,Evens}.
+
+%% 写入文件的函数
+unconsult(File,L)->
+  {ok,S}=file:open(File,write),
+  lists:foreach(fun(X)->io:format(S,"~p.~n",[X]) end,L),
+  file:close(S).
+
+
 
 
 start() ->

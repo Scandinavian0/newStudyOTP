@@ -19,10 +19,11 @@ start() ->
   ChangeGroup = file_change_group(Path),
   io:format("ChangeGroup: ~p~n", [ChangeGroup]),
   ChangeOwner = file_change_owner(Path),
-  io:format("ChangeOwner: ~p~n", [ChangeOwner])
+  io:format("ChangeOwner: ~p~n", [ChangeOwner]),
 %%  ReadResult=file_read_file(Path),
 %%  io:format("ReadResult : ~p~n",ReadResult)
-
+  ReadFile=file_read_file(Path),
+  io:format("ReadFile : ~p~n",[ReadFile])
 .
 
 read_file(Path) ->
@@ -31,5 +32,5 @@ file_change_group(Path)->
   file:change_group(Path,1).
 file_change_owner(Path)->
   file:change_group(Path,1).
-%%file_read_file(Path)->
-%%  file:read_file(Path).
+file_read_file(Path)->
+  file:read_file(Path).
