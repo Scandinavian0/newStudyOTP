@@ -10,7 +10,7 @@
 -author("liuxu").
 
 %% API
--export([urls2htmlFile/2, bin2urls/1,start/0]).
+-export([urls2htmlFile/2, bin2urls/1]).
 -import(lists, [reverse/1, reverse/2, map/2]).
 
 %% 返回一个io列表
