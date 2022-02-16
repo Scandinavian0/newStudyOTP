@@ -18,7 +18,7 @@ test()->
   K=[Bin|SoFar],
   io:format("~p~n",[K]).
 nano_get_url() ->
-  B=nano_get_url("www.bing.com"),
+  B=nano_get_url("www.bing.com"), %% B返回一个请求状态 ok
 %%  B = nano_get_url("www.baidu.com"),
   io:format("B is :~p~n", [B]).
 
@@ -26,7 +26,7 @@ nano_get_url(Host) ->
 %%  连接host
   {ok, Socket} = gen_tcp:connect(Host, 80, [binary, {packet, 0}]),
 
-  ok = gen_tcp:send(Socket, "Get / HTTP/1.0 \r\n\r\n"),
+  ok = gen_tcp:send(Socket, "Get / HTTP/1.0 \r\n\r\n"),  %% 回复分成多个片段，一次发送一点。接收成为消息序列
 
   io:format("ok is ~p~n", [ok]),
   receive_data(Socket, []).
